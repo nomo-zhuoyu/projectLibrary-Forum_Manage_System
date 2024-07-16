@@ -1,0 +1,77 @@
+2024-07-15 14:56:53 [INFO][com.easybbs.EasybbsAdminApplication][logStarting][55]-> Starting EasybbsAdminApplication v1.0 using Java 1.8.0_411 on 真是水沝淼啊 with PID 24112 (C:\Enfile\vue\easybbs\easybbs-admin-release-1.0.jar started by 13692 in C:\Enfile\vue\easybbs)
+2024-07-15 14:56:53 [INFO][com.easybbs.EasybbsAdminApplication][logStartupProfileInfo][635]-> No active profile set, falling back to default profiles: default
+2024-07-15 14:56:54 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 7071 (http)
+2024-07-15 14:56:54 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-7071"]
+2024-07-15 14:56:54 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2024-07-15 14:56:54 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.55]
+2024-07-15 14:56:54 [WARN][org.apache.catalina.core.AprLifecycleListener][log][173]-> This listener must only be nested within Server elements, but is in [TomcatEmbeddedContext].
+2024-07-15 14:56:54 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> An older version [1.2.23] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2024-07-15 14:56:54 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
+2024-07-15 14:56:54 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
+2024-07-15 14:56:54 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2024-07-15 14:56:54 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
+2024-07-15 14:56:55 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2024-07-15 14:56:55 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 1935 ms
+2024-07-15 14:56:56 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-7071"]
+2024-07-15 14:56:56 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 7071 (http) with context path '/api'
+2024-07-15 14:56:56 [INFO][com.easybbs.EasybbsAdminApplication][logStarted][61]-> Started EasybbsAdminApplication in 3.92 seconds (JVM running for 4.383)
+2024-07-15 14:56:56 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][110]-> HikariCPDatasource - Starting...
+2024-07-15 14:56:57 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][123]-> HikariCPDatasource - Start completed.
+2024-07-15 14:56:57 [INFO][com.easybbs.a][run][25]-> 服务启动成功，开始愉快的开发吧
+2024-07-15 15:28:55 [INFO][com.easybbs.EasybbsAdminApplication][logStarting][55]-> Starting EasybbsAdminApplication v1.0 using Java 1.8.0_411 on 真是水沝淼啊 with PID 3776 (C:\Enfile\vue\easybbs\easybbs-admin-release-1.0.jar started by 13692 in C:\Enfile\vue\easybbs)
+2024-07-15 15:28:55 [INFO][com.easybbs.EasybbsAdminApplication][logStartupProfileInfo][635]-> No active profile set, falling back to default profiles: default
+2024-07-15 15:28:57 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 7071 (http)
+2024-07-15 15:28:57 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-7071"]
+2024-07-15 15:28:57 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2024-07-15 15:28:57 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.55]
+2024-07-15 15:28:57 [WARN][org.apache.catalina.core.AprLifecycleListener][log][173]-> This listener must only be nested within Server elements, but is in [TomcatEmbeddedContext].
+2024-07-15 15:28:57 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> An older version [1.2.23] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2024-07-15 15:28:57 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
+2024-07-15 15:28:57 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
+2024-07-15 15:28:57 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2024-07-15 15:28:57 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
+2024-07-15 15:28:57 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2024-07-15 15:28:57 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 2291 ms
+2024-07-15 15:28:59 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-7071"]
+2024-07-15 15:28:59 [WARN][org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext][refresh][591]-> Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 7071 is already in use
+2024-07-15 15:28:59 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Pausing ProtocolHandler ["http-nio-7071"]
+2024-07-15 15:28:59 [INFO][org.apache.catalina.core.StandardService][log][173]-> Stopping service [Tomcat]
+2024-07-15 15:28:59 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Stopping ProtocolHandler ["http-nio-7071"]
+2024-07-15 15:28:59 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Destroying ProtocolHandler ["http-nio-7071"]
+2024-07-15 15:28:59 [INFO][org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener][logMessage][136]-> 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-07-15 15:28:59 [ERROR][org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter][report][40]-> 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 7071 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 7071 or configure this application to listen on another port.
+
+2024-07-15 19:32:25 [INFO][com.easybbs.EasybbsAdminApplication][logStarting][55]-> Starting EasybbsAdminApplication v1.0 using Java 1.8.0_411 on 真是水沝淼啊 with PID 18936 (C:\Enfile\vue\easybbs\easybbs-admin-release-1.0.jar started by 13692 in C:\Enfile\vue\easybbs)
+2024-07-15 19:32:25 [INFO][com.easybbs.EasybbsAdminApplication][logStartupProfileInfo][635]-> No active profile set, falling back to default profiles: default
+2024-07-15 19:32:27 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][initialize][108]-> Tomcat initialized with port(s): 7071 (http)
+2024-07-15 19:32:27 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Initializing ProtocolHandler ["http-nio-7071"]
+2024-07-15 19:32:27 [INFO][org.apache.catalina.core.StandardService][log][173]-> Starting service [Tomcat]
+2024-07-15 19:32:27 [INFO][org.apache.catalina.core.StandardEngine][log][173]-> Starting Servlet engine: [Apache Tomcat/9.0.55]
+2024-07-15 19:32:27 [WARN][org.apache.catalina.core.AprLifecycleListener][log][173]-> This listener must only be nested within Server elements, but is in [TomcatEmbeddedContext].
+2024-07-15 19:32:27 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> An older version [1.2.23] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2024-07-15 19:32:27 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> Loaded Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
+2024-07-15 19:32:27 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
+2024-07-15 19:32:27 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2024-07-15 19:32:27 [INFO][org.apache.catalina.core.AprLifecycleListener][log][173]-> OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
+2024-07-15 19:32:27 [INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api]][log][173]-> Initializing Spring embedded WebApplicationContext
+2024-07-15 19:32:27 [INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext][prepareWebApplicationContext][290]-> Root WebApplicationContext: initialization completed in 2618 ms
+2024-07-15 19:32:29 [INFO][org.apache.coyote.http11.Http11NioProtocol][log][173]-> Starting ProtocolHandler ["http-nio-7071"]
+2024-07-15 19:32:29 [INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer][start][220]-> Tomcat started on port(s): 7071 (http) with context path '/api'
+2024-07-15 19:32:29 [INFO][com.easybbs.EasybbsAdminApplication][logStarted][61]-> Started EasybbsAdminApplication in 5.459 seconds (JVM running for 6.166)
+2024-07-15 19:32:29 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][110]-> HikariCPDatasource - Starting...
+2024-07-15 19:32:32 [INFO][com.zaxxer.hikari.HikariDataSource][getConnection][123]-> HikariCPDatasource - Start completed.
+2024-07-15 19:32:33 [INFO][com.easybbs.a][run][25]-> 服务启动成功，开始愉快的开发吧
