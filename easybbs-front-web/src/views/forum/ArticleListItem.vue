@@ -4,24 +4,24 @@
       <div class="article-body">
         <div class="user-info">
           <Avatar :userId="data.userId" :width="30"></Avatar>
-          <router-link :to="'/user/'+data.userId" class="a-link">
+          <router-link :to="'/user/'+data.userId" class="link-info">
             {{ data.nickName }}
           </router-link>
           <el-divider direction="vertical"></el-divider>
-          <div class = "post-tiem">{{ data.postTime }}</div>
-          <div class = "adress">{{ data.userIpAddress }}</div>
+          <div class = "post-time">{{ data.postTime }}</div>
+          <div class = "adress">&nbsp;·&nbsp;{{ data.userIpAddress }}</div>
           <el-divider direction="vertical"></el-divider>
-          <router-link :to="'/'">
+          <router-link :to="'/'"  class="link-info">
             {{ data.pBoardName }}
           </router-link>
           <template v-if="data.boardName">
-            <el-divider direction="vertical"></el-divider>
-            <router-link :to="'/'">
+            <span>&nbsp;/&nbsp;</span>
+            <router-link :to="'/'"  class="link-info">
               {{ data.boardName }}
             </router-link>
           </template>
         </div>
-        <router-link to="/">{{ data.title }}</router-link>
+        <router-link to="/" class="title">{{ data.title }}</router-link>
         <div class="summary">{{ data.summary }}</div>
         <div class="article-info">
           <span class="iconfont icon-eye-solid">
@@ -35,6 +35,7 @@
           </span>
         </div>
       </div>
+      <Cover :cover="data.cover" v-if="data.cover"></Cover>
     </div>
   </div>
 </template>
@@ -54,17 +55,52 @@ const props = defineProps({
   .article-item-inner{
     border-bottom: 1px solid #ddd;
     padding: 10px;
+    display: flex;
     .article-body{
+      flex:1;
       .user-info{
         display: flex;
         align-items: center;
-        .a-link{
-          font-size:14px;
+        font-size:14px;
+        color:#4e5969;
+        .link-info{
           margin-left:5px;
+          color:#494949;
+          text-decoration: none;
+        }
+        .link-info:hover{
+          color:var(--link);
         }
         .post-time{
-          
+          font-size:14px;
+          color:#757474
         }
+      }
+    }
+    .title{
+      font-weight:bold;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 16px;
+      margin: 10px 0px;
+      display: inline-block;
+    }
+    .summary{
+      font-size:14px;
+      color:#757474;
+    }
+    .article-info{
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      .iconfont{
+        color:#757474;
+        margin-right: 25px;
+        font-size: 14px;
+      }
+      .iconfont::before{
+        padding-right: 3px;
       }
     }
   }

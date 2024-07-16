@@ -19,6 +19,7 @@ import Request from '@/utils/Request.js'
 //全局组件
 import Dialog from "@/components/Dialog.vue"
 import Avatar from "@/components/Avatar.vue"
+import Cover from "@/components/Cover.vue"
 const app = createApp(App)
 
 app.use(router)
@@ -30,7 +31,8 @@ app.config.globalProperties.VueCookies = VueCookies;
 app.config.globalProperties.globalInfo = {
     //全局变量
     bodyWidth:1300,
-    avatarUrl:"/api/file/getAvatar/"
+    avatarUrl:"/api/file/getAvatar/",
+    imageUrl:"/api/file/getImage/"
 }
 
 app.config.globalProperties.Verify = Verify;
@@ -39,5 +41,6 @@ app.config.globalProperties.Request = Request;
 
 app.component("Dialog",Dialog);
 app.component("Avatar",Avatar);
+app.component("Cover",Cover);
 
 app.mount('#app')
