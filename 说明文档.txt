@@ -1,1 +1,1 @@
-test begin
+test 1
