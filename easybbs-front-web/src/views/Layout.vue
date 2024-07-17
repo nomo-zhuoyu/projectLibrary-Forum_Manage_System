@@ -11,19 +11,39 @@
                 </router-link>
                 <!-- 板块信息 -->
                 <div class = "menu-panel">
-                    <span class="menu-item">全部</span>
+                    <router-link 
+                        :class="['menu-item home', activePboardId==undefined?'active':'']" 
+                        to="/"
+                    >
+                        首页
+                    </router-link>
                     <template v-for = "board in boardList">
                         <el-popover placement="bottom-start" :width="300" trigger="hover" v-if="board.children.length>0">
                             <template #reference>
-                                <span class="menu-item">{{ board.boardName }}</span>
+                                <span
+                                    :class="['menu-item',board.boardId==activePboardId?'active':'']" 
+                                    @click="boardClickHandler(board)"
+                                >
+                                    {{ board.boardName }}
+                                </span>
                             </template>
                             <div class = "sub-board-list">
-                                <span class="sub-board" v-for="subBoard in board.children">
+                                <span 
+                                    :class="['sub-board',subBoard.boardId == activeBoardId?'active':'']" 
+                                    v-for="subBoard in board.children" 
+                                    @click="subBoardClickHandler(subBoard)"
+                                >
                                     {{ subBoard.boardName }}
                                 </span>
                             </div>
                         </el-popover>
-                        <span class="menu-item" v-else>{{ board.boardName }}</span>
+                        <span 
+                            :class="['menu-item',board.boardId==activePboardId?'active':'']" 
+                            v-else 
+                            @click="boardClickHandler(board)"
+                        >
+                            {{ board.boardName }}
+                        </span>
                     </template>
                 </div>
                 <!-- 登陆注册信息 -->
@@ -72,13 +92,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div>
-            <div :style="{ height :'200px' , background :'grey' }">1</div>
-            <div :style="{ height :'200px' , background :'white' }">2</div>
-            <div :style="{ height :'200px' , background :'grey' }">3</div>
-            <div :style="{ height :'200px' , background :'white' }">4</div>
-            <div :style="{ height :'200px' , background :'grey' }">5</div>
-        </div>   -->
         <div class = "body-content">
             <router-view/>
         </div>
@@ -146,7 +159,6 @@
     //监听滚动条位置
     const initScroll = () =>{
         let initScrollTop = getScrollTop();
-        console.log(initScrollTop);
         let scrollType = 0;
         window.addEventListener("scroll",() =>{
             let currentScrollTop = getScrollTop();
@@ -200,6 +212,7 @@
             return;
         }
         boardList.value = result.data;
+        store.commit("saveBoardList",result.data);
     };
     loadBoard();
     
@@ -227,6 +240,34 @@
         }, 
         { immediate: true, deep: true }
     );
+
+    // 板块点击
+    const boardClickHandler = (board) =>{
+        router.push(`/forum/${board.boardId}`);
+    } 
+
+    // 二级板块
+    const subBoardClickHandler = (subBoard) =>{
+        router.push(`/forum/${subBoard.pBoardId}/${subBoard.boardId}`);
+    }
+
+    // 当前选中板块
+    const activePboardId = ref(0);
+    watch(
+        () => store.state.activePboardId,
+        (newVal, oldVal) => {
+            activePboardId.value = newVal;
+        }, 
+        { immediate: true, deep: true }
+    ); 
+    const activeBoardId = ref(0);
+    watch(
+        () => store.state.activeBoardId,
+        (newVal, oldVal) => {
+            activeBoardId.value = newVal;
+        }, 
+        { immediate: true, deep: true }
+    ); 
 </script>
 
 
@@ -263,6 +304,13 @@
                 cursor:pointer;
                 // 自定义
                 color: black;
+            }
+            .home{
+                text-decoration: none;
+                color: #000;   
+            }
+            .active{
+                color: var(--link);
             }
         }
         .user-info-panel{
@@ -308,6 +356,9 @@
         margin-top: 10px;
     }
     .sub-board:hover{
+        color: var(--link);
+    }
+    .active{
         color: var(--link);
     }
 }
