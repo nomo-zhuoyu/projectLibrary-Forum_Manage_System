@@ -20,6 +20,8 @@ import Request from '@/utils/Request.js'
 import Dialog from "@/components/Dialog.vue"
 import Avatar from "@/components/Avatar.vue"
 import Cover from "@/components/Cover.vue"
+import DataList from "@/components/DataList.vue"
+import NoData from "@/components/NoData.vue"
 const app = createApp(App)
 
 app.use(router)
@@ -42,5 +44,7 @@ app.config.globalProperties.Request = Request;
 app.component("Dialog",Dialog);
 app.component("Avatar",Avatar);
 app.component("Cover",Cover);
+app.component("DataList",DataList);
+app.component("NoData",NoData);
 
 app.mount('#app')

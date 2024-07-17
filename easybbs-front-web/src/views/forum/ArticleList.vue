@@ -5,17 +5,24 @@
   >
     <div class = "article-panel">
         <div class="top-tab">
-            <div>热榜</div>
+            <div :class="['tab',orderType ==0 ? 'active' : '']" @click="changeOderType(0)">热榜</div>
             <el-divider direction="vertical"></el-divider>
-            <div>发布时间</div>
+            <div :class="['tab',orderType ==1 ? 'active' : '']" @click="changeOderType(1)">发布时间</div>
             <el-divider direction="vertical"></el-divider>
-            <div>最新</div>
+            <div :class="['tab',orderType ==2 ? 'active' : '']" @click="changeOderType(2)">最新</div>
 
         </div>
         <div class="article-lsit">
-            <div v-for="item in articleListInfo.list">
-                <ArticleListItem :data="item"></ArticleListItem>
-            </div>
+            <DataList 
+                :loading = "loading" 
+                :dataSource="articleListInfo" 
+                @loadData = "loadArticle" 
+                noDataMsg="没有文章,发一个吧"
+            >
+                <template #default = "{data}">
+                    <ArticleListItem :data="data"></ArticleListItem>
+                </template>
+            </DataList>
         </div>
     </div>
   
@@ -34,15 +41,29 @@ const api = {
     loadArticle:"/forum/loadArticle",
 }
 
+const changeOderType = (type) => {
+    orderType.value = type;
+    loadArticle();
+}
+
 // 文章列表
+const orderType =ref(0);
+const loading = ref(false);
 const articleListInfo = ref({});
 const loadArticle = async() =>{
+    loading.value=true;
+    let params = {
+        pageNo: articleListInfo.value.pageNo,
+        boardId:0,
+        orderType:orderType.value,
+    }
+    
     let result = await proxy.Request({
         url:api.loadArticle,
-        params:{
-            boardId:0,
-        }
+        params:params,
+        showLoading:false,
     });
+    loading.value=false;
     if(!result){
         return;
     }
@@ -61,7 +82,16 @@ loadArticle();
             padding: 10px;
             font-size: 15px;
             border-bottom:1px solid #ddd ;
+            .tab{
+                cursor: pointer;
+            }
+            .active{
+                color: var(--link);
+            }
         }
+    }
+    .article-list{
+        padding-bottom: 5px;
     }
 }
 
