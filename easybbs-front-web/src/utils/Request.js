@@ -52,6 +52,7 @@ instance.interceptors.response.use(
         if(responseData.code == 200){
             return responseData;
         }else if(responseData.code == 901){
+            // 对登录状态的后端检验 点赞时会901导致弹出登录窗口
             store.commit("showLogin",true);
             store.commit("updateLoginUserInfo",null);
             return Promise.reject({showError:false,msg:"登录超时"});

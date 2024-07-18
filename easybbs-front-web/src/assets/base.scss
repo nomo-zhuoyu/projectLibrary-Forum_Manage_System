@@ -64,6 +64,10 @@ body {
   background: rgb(243,243,243);
 }
 
+*{
+  box-sizing: border-box;
+}
+
 :root{
   --link:#007fff;
   --pink:#FF6699;

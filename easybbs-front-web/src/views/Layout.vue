@@ -280,6 +280,8 @@
     width: 100%;
     height: 80px;
     position: fixed;
+    // 自定义 最高层
+    z-index: 999;
     background-color: #ffffff;
     box-shadow: 0 2px 6px 0 #ddd;
     .header-content{
