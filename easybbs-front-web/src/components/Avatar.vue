@@ -21,7 +21,7 @@
     >
 
     </el-image>
-  
+    <div v-else class="no-login">未登录</div>
   </div>
 </template>
 
@@ -55,7 +55,16 @@ const goToUcenter = () => {
 
 <style lang="scss" scoped>
 .avatar{
+    display: flex;
     cursor:pointer;
+    background: #f0f0f0;
+    align-items: center;
+    overflow: hidden;
+    .no-login{
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+    }
 }
 
 </style>
