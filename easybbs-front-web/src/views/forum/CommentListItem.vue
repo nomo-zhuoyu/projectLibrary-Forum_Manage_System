@@ -9,7 +9,19 @@
             </span>
         </div>
         <div class="comment-content">
-            <span v-html="commentData.content"></span>
+            <div>
+                <span class="tag tag-topping" v-if="commentData.topType==1">置顶</span>
+                <span class="tag no-audit" v-if="commentData.status==0">待审核喵</span>
+                <span  v-html="commentData.content"></span>
+            </div>
+            <CommentImage
+                :style="{ 'margin-top':'10px'}"
+                v-if="commentData.imgPath"
+                :src="proxy.globalInfo.imageUrl + commentData.imgPath.replace('.','_.')"
+                :imgList="[proxy.globalInfo.imageUrl + commentData.imgPath]"
+            >
+
+            </CommentImage>
         </div>
         <div class="op-panel">
             <div class="time">
@@ -28,7 +40,7 @@
                 <div class="iconfont icon-more"></div>
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item>
+                        <el-dropdown-item @click="opTop(commentData)">
                             {{ commentData.topType == 0 ? "设为置顶":"取消置顶" }}
                         </el-dropdown-item>
                     </el-dropdown-menu>
@@ -88,6 +100,7 @@
 
 <script setup>
 import CommentPost  from "./CommentPost.vue"
+import CommentImage from "./CommentImage.vue"
 
 import {ref,reactive, getCurrentInstance, nextTick} from "vue";
 import {useRouter, useRoute} from "vue-router";
@@ -112,7 +125,8 @@ const props = defineProps({
 })
 
 const api ={
-    doLike : "/comment/doLike"
+    doLike : "/comment/doLike",
+    changeTopType:"/comment/changeTopType",
 }
 
 // 显示评论框
@@ -120,7 +134,7 @@ const pCommentId = ref(0);
 const replyUserId = ref(null);
 const placeholderInfo = ref(null);
 
-const emit = defineEmits(["hiddenAllReply"])
+const emit = defineEmits(["hiddenAllReply","reloadData"])
 
 const showReplyPanel= (curData,type) => {
     const haveshow = props.commentData.showReply == undefined ? false : props.commentData.showReply;
@@ -162,6 +176,23 @@ const doLike = async (data) => {
     data.likeType = result.data.likeType;
 }
 
+
+// 置顶
+const opTop = async (data) =>{
+    let result = await proxy.Request({
+        url:api.changeTopType,
+        params:{
+            commentId:data.commentId,
+            topType:data.topType == 1?0:1,
+        },
+    })
+    if(!result){
+        return;
+    }
+    emit("reloadData")
+}
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -187,10 +218,24 @@ const doLike = async (data) => {
                 border-radius: 2px;
             }
         }
-        .coomment-content{
+        .comment-content{
             margin-top: 5px;
             font-size: 15px;
             line-height: 22px;
+            .tag{
+                margin-right: 5px;
+                border-radius: 3px;
+                font-size: 12px;
+                padding: 0px 5px;
+            }
+            .tag-topping{
+                color: var(--pink);
+                border: 1px solid var(--pink);
+            }
+            .no-audit{
+                color: var(--text2);
+                border: 1px solid var(--text2);
+            }
         }
         .op-panel{
             display: flex;

@@ -21,12 +21,19 @@
                   v-model.trim="formData.content"
               ></el-input>
               <div class="insert-img" v-if="showInsertImg">
+                <div class="pre-img" v-if="commentImg">
+                    <CommentImage :src="commentImg">
+
+                    </CommentImage>
+                    <span class="iconfont icon-remove" @click="removeCommentImg"></span>
+                </div>
                 <el-upload 
                     name="file" 
                     :show-file-list="false"
                     accept=".png,.PNG,.jpg,.JPG,.jpeg,.JPEG,.gif,.GIF,.bmp,.BMP"
                     :multiple="false"
                     :http-request="selectImg"
+                    v-else
                     >
                     <span class="iconfont icon-image"></span>
                 </el-upload>
@@ -40,6 +47,7 @@
 </template>
 
 <script setup>
+import CommentImage from "./CommentImage.vue"
 import {ref,reactive, getCurrentInstance, nextTick} from "vue";
 import {useRouter, useRoute} from "vue-router";
 const {proxy} = getCurrentInstance();
@@ -74,10 +82,24 @@ const props = defineProps({
 })
 
 // form信息
+const checkPostComment = (rule,value,callback) => {
+    if(value == null && formData.value.image == null){
+        callback(new Error(rule.message));
+    }else{
+        callback();
+    }
+}
+
+
+
 const formData = ref({});
 const formDataRef = ref();
 const rules = {
-  content: [{ required: true, message: "请输入评论内容" }],
+  content: [
+    { required: true, message: "请输入评论内容",validator:checkPostComment},
+    { min:5,message:"最少5个字捏" },
+  ],
+  
 };
 
 
@@ -101,13 +123,27 @@ const postCommentDo = () => {
         }
         proxy.Message.success("评论发表成功");
         formDataRef.value.resetFields();
+        removeCommentImg();
         emit("postCommentFinish", result.data);
     })
 }
 
 // 选择图片
-const selectImg = () =>{
+const commentImg = ref(null);
+const selectImg = (file) =>{
+    file = file.file;
+    let img = new FileReader();
+    img.readAsDataURL(file);
+    img.onload = ({target}) =>{
+        let imgData = target.result;
+        commentImg.value = imgData;
+        formData.value.image = file;
+    }
+}
 
+const removeCommentImg = () =>{
+    commentImg.value = null;
+    formData.value.image = null;
 }
 </script>
 
@@ -123,6 +159,18 @@ const selectImg = () =>{
             .iconfont{
                 margin-top: 3px;
                 font-size: 20px;
+                color: #3f3f3f;
+                cursor: pointer;
+            }
+            .pre-img{
+                margin-top:10px;
+                position: relative;
+                .iconfont{
+                    position:absolute;
+                    top:-10px;
+                    right:-10px;
+                    color:rgb(121,121,121)
+                }
             }
         }
     }

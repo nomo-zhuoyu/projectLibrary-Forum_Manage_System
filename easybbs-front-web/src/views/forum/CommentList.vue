@@ -1,11 +1,15 @@
 <template>
   <div class="comment-body">
     <div class="comment-title">
-        <div class="title">评论<span class="count">0</span></div>
+        <div class="title">评论<span class="count">{{ commentListInfo.totalCount}}</span></div>
         <div class="tab">
-            <span>热榜</span>
+            <span @click="orderChange(0)" :class="[tab-item,orderType==0?'active':'']">
+                热榜
+            </span>
             <el-divider direction="vertical"/>
-            <span>最新</span>
+            <span @click="orderChange(1)" :class="[tab-item,orderType==1?'active':'']">
+                最新
+            </span>
         </div>
     </div>
     <!-- 发送评论 -->
@@ -23,8 +27,9 @@
     <div class="comment-list">
         <DataList 
             :dataSource="commentListInfo" 
-            :loading="loding"
+            :loading="false"
             @loadData="loadComment"
+            noDataMsg="来到了知识的荒原~"
         >
         <template #default="{data}">
             <CommentListItem 
@@ -33,6 +38,7 @@
                 :articleUserId="articleUserId"
                 :currentUserId="currentUserInfo.userId"
                 @hiddenAllReply="hiddenAllReplyHandler"
+                @reloadData="loadComment"
             >
             </CommentListItem>
         </template>
@@ -66,13 +72,16 @@ const api = {
     loadComment:"/comment/loadComment",
     postComment:"/comment/postComment",
     doLike:"/comment/doLike",
-    changeTopType:"/comment/changeTopType",
 }
 
 
 
 // 排序
 const orderType = ref(0);
+const orderChange = (type) => {
+    orderType.value = type;
+    loadComment();
+}
 
 // 评论列表
 const loading = ref(null);
@@ -105,9 +114,14 @@ const hiddenAllReplyHandler = () => {
     });
 }
 
+const emit = defineEmits(["updateCommentCount"]);
 // 评论发布完成
 const postCommentFinish = (resultData) => {
     commentListInfo.value.list.unshift(resultData);
+    // 更新数量
+    const totalCount = commentListInfo.value.totalCount + 1;
+    commentListInfo.value.totalCount = totalCount;
+    emit("updateCommentCount",totalCount);
 }
 
 // 当前用户信息
@@ -133,6 +147,14 @@ watch(
             .count{
                 font-size: 14px;
                 padding: 0px 10px;
+            }
+        }
+        .tab{
+            .tab-item{
+                cursor: pointer;
+            }   
+            .active{
+                color:var(--link);
             }
         }
     }
